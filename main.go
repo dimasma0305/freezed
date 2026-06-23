@@ -392,6 +392,12 @@ func main() {
 		}
 	}
 
+	// freezed: pinpoint the vulnerable line(s) with marks/rings on top of the code.
+	if !isAnsi && hasAnnotations(&config) {
+		visibleLines := strings.Split(input, "\n")
+		imageWidth, imageHeight = applyAnnotations(image, terminal, &config, scale, visibleLines, offsetLine, imageWidth, imageHeight)
+	}
+
 	istty := isatty.IsTerminal(os.Stdout.Fd())
 
 	switch {

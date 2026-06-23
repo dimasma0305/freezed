@@ -48,6 +48,11 @@ type Config struct {
 	LineHeight      float64 `json:"line_height" help:"Line height relative to font size." group:"Line" placeholder:"1.2"`
 	Lines           []int   `json:"-" help:"Lines to capture (start,end)." group:"Line" placeholder:"0,-1" value:"0,-1"`
 	ShowLineNumbers bool    `json:"show_line_numbers" help:"" group:"Line" placeholder:"false"`
+
+	// Annotation (freezed): pinpoint the vulnerable line(s).
+	// sep:"none" so a selector may contain commas (e.g. a code substring or "from..to").
+	Mark   []string `json:"-" sep:"none" help:"Numbered badge on a line, by number or quoted text (repeatable)." group:"Annotation" placeholder:"\"ring.Del(ctx,\""`
+	Circle []string `json:"-" sep:"none" help:"Hand-drawn ring around a line, by number or quoted text (repeatable)." group:"Annotation" placeholder:"\"parse(a.body)\""`
 }
 
 // Shadow is the configuration options for a drop shadow.
