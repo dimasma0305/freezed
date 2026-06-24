@@ -24,6 +24,7 @@ type Config struct {
 	Window     bool      `json:"window" help:"Display window controls." group:"Window"`
 	Width      float64   `json:"width" help:"Width of terminal window." short:"W" group:"Window"`
 	Height     float64   `json:"height" help:"Height of terminal window." short:"H" group:"Window"`
+	Title      string    `json:",omitempty" help:"Text shown in the window title bar (e.g. the file path)." group:"Window" placeholder:"path/to/file"`
 
 	// Settings
 	Version     bool   `json:"version" help:"Display Freeze's version." short:"v" group:"Settings"`

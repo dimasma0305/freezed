@@ -379,6 +379,19 @@ func main() {
 	svg.SetDimensions(image, imageWidth, imageHeight)
 	svg.SetDimensions(terminal, terminalWidth, terminalHeight)
 
+	// freezed: render the file path (or any --title) centered in the window bar.
+	if config.Window && config.Title != "" {
+		title := etree.NewElement("text")
+		title.CreateAttr("x", fmt.Sprintf("%.2f", imageWidth/2))
+		title.CreateAttr("y", fmt.Sprintf("%.2f", config.Margin[top]+16*scale))
+		title.CreateAttr("text-anchor", "middle")
+		title.CreateAttr("font-family", config.Font.Family)
+		title.CreateAttr("font-size", fmt.Sprintf("%.2fpx", 12*scale))
+		title.CreateAttr("fill", "#768390")
+		title.SetText(config.Title)
+		image.AddChild(title)
+	}
+
 	if isAnsi {
 		parser := ansi.NewParser()
 		parser.SetHandler(ansi.Handler{
